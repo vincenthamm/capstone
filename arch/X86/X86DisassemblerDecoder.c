@@ -1941,8 +1941,12 @@ int decodeInstruction(struct InternalInstruction* insn,
 			readOperands(insn))
 		return -1;
 
-	if (insn->operandSize == 0)
-		insn->operandSize = insn->registerSize;
+	if (insn->operandSize == 0) {
+		if (insn->immediateSize)
+			insn->operandSize = insn->immediateSize;
+		else
+			insn->operandSize = insn->registerSize;
+	}
 
 	insn->operands = &x86OperandSets[insn->spec->operands][0];
 
