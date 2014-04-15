@@ -762,7 +762,7 @@ bool X86_getInstruction(csh ud, const uint8_t *code, size_t code_len, MCInst *in
 				update_pub_insn(&instr->flat_insn, &insn);
 
 			// save immediate size to print immediate properly
-			instr->x86_imm_size = insn.immediateSize;
+			instr->x86_imm_size = insn.operandSize;
 		}
 
 		return result;
