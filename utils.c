@@ -6,6 +6,12 @@
 
 #include "utils.h"
 
+#ifdef _WIN32
+static int strcasecmp(const char *s1, const char *s2) {
+    return _stricmp(s1, s2);
+}
+#endif
+
 // return the position of a string in a list of strings
 // or -1 if given string is not in the list
 int str_in_list(char **list, char *s)
